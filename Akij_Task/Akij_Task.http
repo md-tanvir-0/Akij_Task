@@ -1,0 +1,6 @@
+@Akij_Task_HostAddress = http://localhost:5072
+
+GET {{Akij_Task_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
