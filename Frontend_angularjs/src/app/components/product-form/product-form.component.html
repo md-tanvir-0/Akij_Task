@@ -1,0 +1,49 @@
+<form [formGroup]="productForm" (ngSubmit)="save()">
+  <div class="w-full flex flex-wrap">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput placeholder="Name" formControlName="name" />
+      <mat-error *ngIf="productForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="w-full flex flex-wrap">
+    <mat-form-field class="w-full">
+      <mat-label>Description</mat-label>
+      <input type="text" matInput placeholder="Description" formControlName="description" />
+      <mat-error *ngIf="productForm.get('description')?.hasError('required')">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="w-full flex flex-wrap">
+    <mat-form-field class="w-full">
+      <mat-label>Price</mat-label>
+      <input type="number" matInput placeholder="Price" formControlName="price" />
+      <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+        Price is required
+      </mat-error>
+      <mat-error *ngIf="productForm.get('price')?.hasError('min')">
+        Price must be greater than 0
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="w-full flex flex-wrap">
+    <mat-form-field class="w-full">
+      <mat-label>Quantity</mat-label>
+      <input type="number" matInput placeholder="Quantity" formControlName="quantity" />
+      <mat-error *ngIf="productForm.get('quantity')?.hasError('required')">
+        Quantity is required
+      </mat-error>
+      <mat-error *ngIf="productForm.get('quantity')?.hasError('min')">
+        Quantity must be greater than 0
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="flex justify-center">
+    <button mat-raised-button color="primary" [disabled]="!productForm.valid">
+      {{ isEdit ? 'Update' : 'Add' }}
+    </button>
+  </div>
+</form>
